@@ -4,7 +4,9 @@ const connectToDb = require("./db.js");
 const app = express();
 const port = 3000;
 
-const dbURL = process.env.Local_MONGO_URI;
+//const URI = process.env.Local_MONGO_URI;
+
+const URI = process.env.CLOUD_MONGO_URI
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -19,7 +21,7 @@ app.get("/", (req, res) => {
   res.send("Hello sir how can i help you ");
 });
 
-connectToDb(dbURL)
+connectToDb(URI)
   .then(() => {
     console.log("connection to Db successfully");
     app.listen(port, () =>
