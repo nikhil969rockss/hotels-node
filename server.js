@@ -1,12 +1,13 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
 const connectToDb = require("./db.js");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 4000;
 
 //const URI = process.env.Local_MONGO_URI;
 
-const URI = process.env.CLOUD_MONGO_URI
+const URI = process.env.CLOUD_MONGO_URI;
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
